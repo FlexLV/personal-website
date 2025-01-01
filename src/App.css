@@ -1,0 +1,13 @@
+nav{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.center-nav{
+    display: flex;
+    
+}
+.right-nav{
+    justify-content: flex-end;
+}
