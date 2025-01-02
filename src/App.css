@@ -1,13 +1,61 @@
-nav{
+body {
+    background-color: #0E100F;
+    margin: 0;
+    /* Remove the explicit width: auto; so it doesn't exceed the viewport width */
+    /* Instead, default body to 100% of the window's width. */
+    /* overflow-x: hidden;  // <-- If you want to force-hide horizontal scroll. */
+  }
+  
+  .nav-container {
+    /* Make sure the container doesn’t exceed the screen width */
+    box-sizing: border-box;
+    max-width: 100%; 
+    width: 100%;
+  
+    position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: center;  
+    align-items: center;
     
-}
-
-.center-nav{
+    /* Maintain your original spacing & transparency */
+    padding: 1rem;
+    background: none;         
+    margin: 0 auto;
+  }
+  
+  /* Center pill remains in the natural flex center */
+  .center-pill {
+    /* no special positioning needed */
+  }
+  
+  /* Right pill absolutely pinned to the right edge of the nav-container */
+  .right-pill {
+    position: absolute;
+    right: 1rem;
+  }
+  
+  /* Same pill style, only color/border changes from your original code remain */
+  .pill {
     display: flex;
-    
-}
-.right-nav{
-    justify-content: flex-end;
-}
+    align-items: center;
+    background-color: #0E100F;  /* black “pill” */
+    border: 1px solid #3f3f3f;  /* border color you chose */
+    border-radius: 9999px;      /* super round corners */
+    padding: 0.5rem 1rem;
+  }
+  
+  /* Buttons inside each pill */
+  .nav-container button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    margin: 0 0.5rem;
+  }
+  
+  /* Optional hover effect */
+  .nav-container button:hover {
+    opacity: 0.7;
+  }
+  
