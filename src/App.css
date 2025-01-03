@@ -1,61 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+
 body {
-    background-color: #0E100F;
-    margin: 0;
-    /* Remove the explicit width: auto; so it doesn't exceed the viewport width */
-    /* Instead, default body to 100% of the window's width. */
-    /* overflow-x: hidden;  // <-- If you want to force-hide horizontal scroll. */
-  }
+  background-color: #0e100f; 
+  margin: 0;
+}
+
+.nav-container {
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.7rem;
+  background: none;
+  margin: 0 auto;
   
-  .nav-container {
-    /* Make sure the container doesn’t exceed the screen width */
-    box-sizing: border-box;
-    max-width: 100%; 
-    width: 100%;
-  
-    position: relative;
-    display: flex;
-    justify-content: center;  
-    align-items: center;
-    
-    /* Maintain your original spacing & transparency */
-    padding: 1rem;
-    background: none;         
-    margin: 0 auto;
-  }
-  
-  /* Center pill remains in the natural flex center */
-  .center-pill {
-    /* no special positioning needed */
-  }
-  
-  /* Right pill absolutely pinned to the right edge of the nav-container */
-  .right-pill {
-    position: absolute;
-    right: 1rem;
-  }
-  
-  /* Same pill style, only color/border changes from your original code remain */
-  .pill {
-    display: flex;
-    align-items: center;
-    background-color: #0E100F;  /* black “pill” */
-    border: 1px solid #3f3f3f;  /* border color you chose */
-    border-radius: 9999px;      /* super round corners */
-    padding: 0.5rem 1rem;
-  }
-  
-  /* Buttons inside each pill */
-  .nav-container button {
-    background-color: transparent;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 0.95rem;
-    margin: 0 0.5rem;
-  }
-  
-  /* Optional hover effect */
-  .nav-container button:hover {
-    opacity: 0.7;
-  }
-  
+  border-bottom: 1px  solid #3f3f3f;
+}
+
+.center-pill {
+}
+
+.right-pill {
+  position: absolute;
+  right: 1rem;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  background-color: #0e100f; 
+  border: 1px solid #3f3f3f;
+  border-radius: 9999px;
+  padding: 0.7rem 0.5rem; 
+}
+
+.nav-container button {
+  background-color: transparent;
+  color: #fff; 
+  border: none;
+  cursor: pointer;
+  font-size: 0.92rem;
+  margin: 0 0.2rem;
+  font-family: 'Varela', serif;
+  font-weight: 400;
+  display: flex; 
+  align-items: center; 
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-container button .icon {
+  font-size: 1rem; 
+  margin-right: 0.3rem; 
+  line-height: inherit; 
+}
+
+.nav-container button:hover {
+  opacity: 0.7; 
+  color: #3698da; 
+  transition: color 0.3s ease-in-out;
+}
+
+body {
+  background-color: #0e100f;
+  margin: 0;
+}
