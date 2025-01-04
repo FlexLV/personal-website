@@ -1,0 +1,99 @@
+
+.hero-container {
+    position: relative;
+    padding: 2rem;
+    color: #fff;           
+    font-family: sans-serif;
+   
+  }
+  
+
+  .avatar-bubble {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 1rem;   
+  }
+  
+
+  .avatar-image {
+    width: 60px; 
+    height: 60px;
+    border-radius: 50%; 
+    object-fit: cover;    
+    margin-right: 1rem;   
+  }
+  
+
+  .speech-bubble {
+    position: relative;
+    background-color: #111;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;    
+    font-size: 0.95rem;
+  }
+  
+
+  .speech-bubble::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -8px;               
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-right-color: #111;     
+  }
+  
+  /* The big text title */
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin: 1rem 0;
+    max-width: 600px;   
+  }
+  
+
+  .labels {
+    margin-top: 1rem;
+  }
+  
+  /* Common .label style */
+  .label {
+    display: inline-block;
+    background-color: #222;
+    color: #fff;
+    padding: 0.3rem 0.7rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem; 
+  }
+  
+ 
+  .product {
+    background-color: #e40fcf; 
+  }
+  
+  .location {
+    background-color: #333;
+  }
+  
+  @keyframes popFromAbove {
+    0% {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .speech-bubble {
+    animation: popFromAbove 0.5s ease-out forwards;
+    /* 
+       This means the bubble will animate from 
+       slightly above and fade in over 0.5 seconds
+    */
+  }
+  
