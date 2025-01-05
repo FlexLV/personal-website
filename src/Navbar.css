@@ -13,7 +13,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.7rem;
+  padding: 0.9rem;
   background: none;
   margin: 0 auto;
   
@@ -34,7 +34,7 @@ body {
   background-color: #0e100f; 
   border: 1px solid #3f3f3f;
   border-radius: 9999px;
-  padding: 0.7rem 0.5rem; 
+  padding: 0.6rem 0.5rem; 
 }
 
 .nav-container button {

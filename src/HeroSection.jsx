@@ -1,50 +1,50 @@
-// HeroSection.jsx
 import React from 'react';
-import { motion } from 'framer-motion'; 
 import './HeroSection.css';
 
 export default function HeroSection() {
   return (
-    <div className="hero-container">
-      
-
-      <motion.div
-        className="avatar-bubble"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+    <section className="hero-section">
+      {/* 1) Avatar + speech bubble + product label */}
+      <div className="avatar-bubble">
         <img 
-          src="/path/to/binil-avatar.png" 
-          alt="Binil's Avatar" 
-          className="avatar-image" 
+          src="/path/to/your-avatar.png"
+          alt="Ernests Avatar"
+          className="avatar-image"
         />
         <div className="speech-bubble">Hello, I’m Ernests</div>
-      </motion.div>
+        <div className="product-label">Product</div>
+      </div>
 
-      
-      <motion.h1
-        className="hero-title"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        SOFTWARE<br/>
-        DEVELOPER<br/>
-        &amp; WEB  DEVELOPER
-      </motion.h1>
+      {/* 2) Big multi-colored heading */}
+      <h1 className="hero-title">
+        <span className="digital">DIGITAL</span><br />
+        <span className="experience">EXPERIENCE</span><br />
+        <span className="designer">DESIGNER</span> &nbsp;
+        <span className="developer">&amp; DEVELOPER</span>
+      </h1>
 
-      <motion.div
-        className="labels"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      >
-        <span className="label product">Product</span>
-        <span className="label location">Based in Riga, Latvia</span>
-        <span className="label connect">Let’s Connect</span>
-      </motion.div>
+      {/* 3) "Based in Riga, Latvia" + "Let’s Connect" to the top-right */}
+      <div className="right-labels">
+        <div className="label riga-label">Based in Riga, Latvia</div>
+        <div className="label connect-label">
+          <span className="green-dot" />
+          Let’s Connect
+        </div>
+      </div>
 
-    </div>
+      {/* 4) UI/UX / Full-Stack + Dev bubble on the left */}
+      <div className="left-subtitle">
+        <div>// UI/UX Designer</div>
+        <div>Full-Stack Developer
+          <span className="dev-bubble">Dev</span>
+        </div>
+      </div>
+
+      {/* 5) Paragraph */}
+      <p className="hero-description">
+        I create and develop efficient, aesthetic, and 
+        functional websites and software.
+      </p>
+    </section>
   );
 }
