@@ -1,0 +1,60 @@
+/* src/Greetings.css */
+.greetings-app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1e1e1e; /* Dark background for contrast */
+    color: #ffffff; /* White text */
+    font-family: 'Arial, sans-serif';
+  }
+  
+  .greeting-container {
+    text-align: center;
+  }
+  
+  .greeting-container h1 {
+    font-size: 4rem;
+    margin: 0;
+  }
+  
+  .greeting-container p {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    opacity: 0.7;
+  }
+  
+  /* Transition classes for react-transition-group */
+  .fade-enter {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .fade-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+  }
+  
+  .fade-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .fade-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .greeting-container h1 {
+      font-size: 2.5rem;
+    }
+  
+    .greeting-container p {
+      font-size: 1.2rem;
+    }
+  }
+  
