@@ -1,47 +1,42 @@
 // src/Greetings.jsx
-import React, { useState, useEffect, useRef } from 'react';
-import './Greetings.css'; // Import the CSS for Greetings
-import greetingsList from './greetings.js';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import React, { useState, useEffect } from 'react';
+import './Greetings.css';
+import greetingsList from './greetings';
 
-const Greetings = () => {
+const Greetings = ({ onFinish }) => {
   const [current, setCurrent] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  
-  // Create a ref for the transitioning element
-  const nodeRef = useRef(null);
+  const totalGreetings = greetingsList.length;
+  const [animationClass, setAnimationClass] = useState('fade-in');
 
   useEffect(() => {
-    if (isPaused) return;
+    // Duration settings
+    const displayDuration = 2500; // Total duration per greeting (2.5 seconds)
+    const fadeDuration = 500;     // Duration for fade-out (0.5 seconds)
 
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % greetingsList.length);
-    }, 2000); // Change greeting every 2 seconds
+    const timeout1 = setTimeout(() => {
+      setAnimationClass('fade-out');
+    }, displayDuration - fadeDuration); // Start fade-out 0.5s before the end
 
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, [isPaused]);
+    const timeout2 = setTimeout(() => {
+      if (current < totalGreetings - 1) {
+        setCurrent(current + 1);
+        setAnimationClass('fade-in');
+      } else {
+        // All greetings have been displayed; proceed to main content
+        onFinish();
+      }
+    }, displayDuration); // Change greeting after displayDuration
+
+    return () => {
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+    };
+  }, [current, totalGreetings, onFinish]);
 
   return (
-    <div
-      className="greetings-app"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      <div className="greeting-container">
-        <TransitionGroup>
-          <CSSTransition
-            key={greetingsList[current].lang}
-            timeout={500}
-            classNames="fade"
-            nodeRef={nodeRef} // Pass the nodeRef here
-          >
-            {/* Assign the ref to the child div */}
-            <div ref={nodeRef}>
-              <h1>{greetingsList[current].text}</h1>
-              <p>{greetingsList[current].lang}</p>
-            </div>
-          </CSSTransition>
-        </TransitionGroup>
+    <div className="greetings-app">
+      <div className={`greeting-text ${animationClass}`}>
+        {greetingsList[current]}
       </div>
     </div>
   );

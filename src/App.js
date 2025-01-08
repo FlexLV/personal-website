@@ -1,14 +1,22 @@
-import React from 'react';
-import Navbar from "./Navbar.jsx"
-import HeroSection from './HeroSection.jsx';
+// src/App.js
+import React, { useState } from 'react';
 import Greetings from './Greetings.jsx';
+import MainContent from './MainContent';
 
-export default function MainPage() {
+
+function App() {
+  const [showMain, setShowMain] = useState(false);
+
+  const handleGreetingsFinish = () => {
+    setShowMain(true);
+  };
+
   return (
-    <>
-    <Greetings />
-    <Navbar/>
-    <HeroSection/>
-    </>
+    <div className="App">
+      {!showMain && <Greetings onFinish={handleGreetingsFinish} />}
+      {showMain && <MainContent />}
+    </div>
   );
 }
+
+export default App;
