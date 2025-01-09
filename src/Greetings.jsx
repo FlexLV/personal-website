@@ -15,7 +15,7 @@ const Greetings = ({ onFinish }) => {
 
     const timeout1 = setTimeout(() => {
       setAnimationClass('fade-out');
-    }, displayDuration - fadeDuration); // Start fade-out 0.5s before the end
+    }, displayDuration - fadeDuration); // Stardadwt fade-out 0.5s before the end
 
     const timeout2 = setTimeout(() => {
       if (current < totalGreetings - 1) {
