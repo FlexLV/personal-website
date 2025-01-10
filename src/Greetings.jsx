@@ -10,8 +10,8 @@ const Greetings = ({ onFinish }) => {
 
   useEffect(() => {
     // Duration settings
-    const displayDuration = 2500; // Total duration per greeting (2.5 seconds)
-    const fadeDuration = 500;     // Duration for fade-out (0.5 seconds)
+    const displayDuration = 300; // Total duration per greeting (2.5 seconds)
+    const fadeDuration = 1000;     // Duration for fade-out (0.5 seconds)
 
     const timeout1 = setTimeout(() => {
       setAnimationClass('fade-out');
