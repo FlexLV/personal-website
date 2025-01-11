@@ -1,60 +1,84 @@
 /* src/Greetings.css */
+
 .greetings-app {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #1e1e1e; /* Dark background for contrast */
-    color: #ffffff; /* White text */
-    font-family: 'Arial, sans-serif';
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Arial, sans-serif';
+  color: #ffffff;
+  background-color: #1e1e1e; /* Dark background for contrast */
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1e1e1e; /* Same as greetings-app for seamless transition */
+  z-index: 2; /* Ensure it sits above the greetings */
+  transform: translateY(100%); /* Start off-screen at the bottom */
+}
+
+.background-slide-in {
+  animation: slideUp 1s forwards;
+}
+
+.background-slide-out {
+  animation: slideDown 1s forwards;
+}
+
+@keyframes slideUp {
+  from {
+      transform: translateY(100%);
   }
-  
-  .greeting-container {
-    text-align: center;
+  to {
+      transform: translateY(0);
   }
-  
+}
+
+@keyframes slideDown {
+  from {
+      transform: translateY(0);
+  }
+  to {
+      transform: translateY(-100%);
+  }
+}
+
+.greeting-container {
+  text-align: center;
+  z-index: 1; /* Below the background overlay */
+}
+
+.greeting-container h1 {
+  font-size: 5rem; /* Increased font size */
+  margin: 0;
+  position: relative;
+}
+
+.greeting-container h1::before {
+  content: '• '; /* Dot before the text */
+  color: #ffffff;
+  font-size: 1.5rem; /* Size of the dot */
+}
+
+.greeting-container p {
+  font-size: 2rem; /* Increased font size */
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
   .greeting-container h1 {
-    font-size: 4rem;
-    margin: 0;
+      font-size: 3rem;
   }
-  
+
   .greeting-container p {
-    font-size: 1.5rem;
-    margin-top: 0.5rem;
-    opacity: 0.7;
+      font-size: 1.5rem;
   }
-  
-  /* Transition classes for react-transition-group */
-  .fade-enter {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  
-  .fade-enter-active {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
-  }
-  
-  .fade-exit {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .fade-exit-active {
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 600px) {
-    .greeting-container h1 {
-      font-size: 2.5rem;
-    }
-  
-    .greeting-container p {
-      font-size: 1.2rem;
-    }
-  }
-  
+}

@@ -6,37 +6,56 @@ import greetingsList from './greetings';
 const Greetings = ({ onFinish }) => {
   const [current, setCurrent] = useState(0);
   const totalGreetings = greetingsList.length;
-  const [animationClass, setAnimationClass] = useState('fade-in');
+  const [bgAnimation, setBgAnimation] = useState('');
 
   useEffect(() => {
     // Duration settings
-    const displayDuration = 300; // Total duration per greeting (2.5 seconds)
-    const fadeDuration = 1000;     // Duration for fade-out (0.5 seconds)
+    const slideDuration = 1000; // 1 second for background animation
+    const displayDuration = 5000; // 2 seconds for showing the greeting
 
-    const timeout1 = setTimeout(() => {
-      setAnimationClass('fade-out');
-    }, displayDuration - fadeDuration); // Stardadwt fade-out 0.5s before the end
+    // Timer to start slide-in after displayDuration
+    const displayTimeout = setTimeout(() => {
+      setBgAnimation('background-slide-in');
 
-    const timeout2 = setTimeout(() => {
-      if (current < totalGreetings - 1) {
-        setCurrent(current + 1);
-        setAnimationClass('fade-in');
-      } else {
-        // All greetings have been displayed; proceed to main content
-        onFinish();
-      }
-    }, displayDuration); // Change greeting after displayDuration
+      // After slide-in completes, wait for slideDuration then change greeting
+      const slideInTimeout = setTimeout(() => {
+        if (current < totalGreetings - 1) {
+          setCurrent(prev => prev + 1);
+          setBgAnimation('background-slide-out');
 
+          // After slide-out completes, remove the animation class
+          const slideOutTimeout = setTimeout(() => {
+            setBgAnimation('');
+          }, slideDuration);
+
+          // Cleanup slideOutTimeout if component unmounts
+          return () => clearTimeout(slideOutTimeout);
+        } else {
+          // If all greetings have been displayed, finish
+          onFinish();
+        }
+      }, slideDuration);
+
+      // Cleanup slideInTimeout if component unmounts
+      return () => clearTimeout(slideInTimeout);
+    }, displayDuration);
+
+    // Cleanup displayTimeout if component unmounts or current changes
     return () => {
-      clearTimeout(timeout1);
-      clearTimeout(timeout2);
+      clearTimeout(displayTimeout);
     };
   }, [current, totalGreetings, onFinish]);
 
   return (
     <div className="greetings-app">
-      <div className={`greeting-text ${animationClass}`}>
-        {greetingsList[current]}
+      {/* Background Overlay */}
+      <div className={`background-overlay ${bgAnimation}`}></div>
+
+      {/* Greeting Content */}
+      <div className="greeting-container">
+        <h1>{greetingsList[current]}</h1>
+        {/* If you have a <p> element, you can include it here */}
+        {/* <p>Subtext or additional information</p> */}
       </div>
     </div>
   );
