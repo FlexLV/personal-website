@@ -1,7 +1,7 @@
 // src/greetings.js
 const greetingsList = [
   "Hello!",
-  "Welcome!",
+  "Guten Tag",
   "Bonjour!",
   "Hola!",
   "こんにちは!",
