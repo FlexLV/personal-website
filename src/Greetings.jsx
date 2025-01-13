@@ -6,56 +6,82 @@ import greetingsList from './greetings';
 const Greetings = ({ onFinish }) => {
   const [current, setCurrent] = useState(0);
   const totalGreetings = greetingsList.length;
-  const [bgAnimation, setBgAnimation] = useState('');
+
+  // We’ll track which "phase" we’re in: 
+  // - "fadeInFirst" for the first greeting
+  // - "slideInOut" for intermediate greetings
+  // - "slideUp" for after the last greeting
+  const [phase, setPhase] = useState('fadeInFirst');
+
+  // We use these durations (in ms) to schedule transitions
+  const fadeInDuration = 1000;   // 1s fade in for first greeting
+  const holdDuration = 1500;     // 1.5s we hold the greeting on screen
+  const transitionDuration = 1000; // 1s for any slide transitions
+  const finalSlideUpDuration = 1000; // 1s for the final page slide-up
 
   useEffect(() => {
-    // Duration settings
-    const slideDuration = 1000; // 1 second for background animation
-    const displayDuration = 5000; // 2 seconds for showing the greeting
-
-    // Timer to start slide-in after displayDuration
-    const displayTimeout = setTimeout(() => {
-      setBgAnimation('background-slide-in');
-
-      // After slide-in completes, wait for slideDuration then change greeting
-      const slideInTimeout = setTimeout(() => {
+    if (phase === 'fadeInFirst') {
+      // 1) Fade in the first greeting, hold it, then move to the next greeting
+      const timer = setTimeout(() => {
+        // Move to the second greeting
         if (current < totalGreetings - 1) {
           setCurrent(prev => prev + 1);
-          setBgAnimation('background-slide-out');
-
-          // After slide-out completes, remove the animation class
-          const slideOutTimeout = setTimeout(() => {
-            setBgAnimation('');
-          }, slideDuration);
-
-          // Cleanup slideOutTimeout if component unmounts
-          return () => clearTimeout(slideOutTimeout);
+          setPhase('slideInOut'); 
         } else {
-          // If all greetings have been displayed, finish
-          onFinish();
+          // If there's only 1 greeting in your list, jump to final
+          setPhase('slideUp');
         }
-      }, slideDuration);
+      }, fadeInDuration + holdDuration);
 
-      // Cleanup slideInTimeout if component unmounts
-      return () => clearTimeout(slideInTimeout);
-    }, displayDuration);
+      return () => clearTimeout(timer);
 
-    // Cleanup displayTimeout if component unmounts or current changes
-    return () => {
-      clearTimeout(displayTimeout);
-    };
-  }, [current, totalGreetings, onFinish]);
+    } else if (phase === 'slideInOut') {
+      // 2) For greetings #2..#(n-1):
+      //    Show a "slide in" or mild fade, hold, then move to next greeting
+      const timer = setTimeout(() => {
+        if (current < totalGreetings - 1) {
+          setCurrent(prev => prev + 1);
+        } else {
+          // After last greeting is shown, do final slide up
+          setPhase('slideUp');
+        }
+      }, transitionDuration + holdDuration);
+
+      return () => clearTimeout(timer);
+
+    } else if (phase === 'slideUp') {
+      // 3) Slide the entire screen up and then trigger onFinish
+      const timer = setTimeout(() => {
+        onFinish(); 
+      }, finalSlideUpDuration);
+
+      return () => clearTimeout(timer);
+    }
+  }, [
+    phase,
+    current,
+    totalGreetings,
+    onFinish,
+    fadeInDuration,
+    holdDuration,
+    transitionDuration,
+    finalSlideUpDuration
+  ]);
 
   return (
-    <div className="greetings-app">
-      {/* Background Overlay */}
-      <div className={`background-overlay ${bgAnimation}`}></div>
-
-      {/* Greeting Content */}
+    <div className={`greetings-app ${phase === 'slideUp' ? 'page-slide-up' : ''}`}>
       <div className="greeting-container">
-        <h1>{greetingsList[current]}</h1>
-        {/* If you have a <p> element, you can include it here */}
-        {/* <p>Subtext or additional information</p> */}
+        <h1
+          className={
+            phase === 'fadeInFirst' && current === 0
+              ? 'fade-in-first'
+              : phase === 'slideInOut'
+              ? 'slide-in-out'
+              : ''
+          }
+        >
+          {greetingsList[current]}
+        </h1>
       </div>
     </div>
   );

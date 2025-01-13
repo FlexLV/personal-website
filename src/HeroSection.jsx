@@ -6,7 +6,7 @@ export default function HeroSection() {
     <section className="hero-section">
       <div className="avatar-bubble">
         <img 
-          src="/path/to/your-avatar.png"
+          src="./image0.jpg"
           alt="Ernests Avatar"
           className="avatar-image"
         />
