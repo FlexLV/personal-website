@@ -1,52 +1,44 @@
-/* Container to hold the greetings */
 .greetings-app {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100vh; /* or whatever size you need */
+  height: 100vh;
   overflow: hidden;
-  background: #111; /* your background color */
+  background: transparent; 
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
+  z-index: 9999;
 }
 
-/* --- 1) Fade in the first greeting --- */
 .fade-in-first {
-  animation: fadeInFirst 1s ease forwards;
+  animation: fadeInFirst 2s ease forwards;
 }
 
 @keyframes fadeInFirst {
   0% {
     opacity: 0;
-    transform: translateY(10px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-/* Just to hold the greeting in place after it fades in, 
-   we can rely on setTimeout logic in React to switch states */
-
-/* --- 2) Slide (or fade) for intermediate greetings --- */
-.slide-in-out {
-  animation: slideInOut 1s ease forwards;
+.fade-in-others {
+  animation: fadeInOthers 0.5s ease forwards;
 }
 
-@keyframes slideInOut {
+@keyframes fadeInOthers {
   0% {
     opacity: 0;
-    transform: translateX(-50px);
   }
   100% {
     opacity: 1;
-    transform: translateX(0);
   }
 }
 
-/* --- 3) After the last greeting, slide the entire page up --- */
 .page-slide-up {
   animation: pageSlideUp 1s ease forwards;
 }
