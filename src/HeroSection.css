@@ -10,15 +10,7 @@
   --green: #4bd37b;
 }
 
-@media (min-width: 640px) {
-}
-
-@media (min-width: 768px) {
-}
-
-@media (min-width: 1024px) {
-}
-
+/* Use a blackish background, similar to the screenshot. */
 .main-container {
   width: 100vw;
   min-height: 100vh;
@@ -29,6 +21,7 @@
   font-family: "Inter", sans-serif;
 }
 
+/* Avatar + greeting row */
 .avatar-row {
   display: flex;
   align-items: center;
@@ -48,16 +41,11 @@
   padding-top: 0.25rem;
 }
 
-@media (min-width: 768px) {
-  .avatar-circle {
-    padding-top: 0.5rem;
-  }
-}
-
 @media (min-width: 1024px) {
   .avatar-circle {
     width: 4rem;
     height: 4rem;
+    padding-top: 0.5rem;
   }
 }
 
@@ -101,47 +89,44 @@
   }
 }
 
+/* The pink Product label */
 .pink-product-transform {
   position: relative;
   z-index: 30;
 }
-
 .pink-product-img {
   position: absolute;
   width: 5rem;
 }
-
 @media (min-width: 640px) {
   .pink-product-img {
     width: 7rem;
   }
 }
 
+/* Show Dev only on small screens */
 .small-screen-dev {
 }
-
 @media (min-width: 640px) {
   .small-screen-dev {
     display: none;
   }
 }
-
 .dev-transform {
   position: relative;
   z-index: 30;
 }
-
 .small-dev-img {
   position: absolute;
   width: 3.5rem;
 }
-
 @media (min-width: 640px) {
   .small-dev-img {
     width: 5rem;
   }
 }
 
+/* Row 1 */
 .row1 {
   color: var(--primarytext);
   display: flex;
@@ -152,41 +137,38 @@
   padding-right: 1.5rem;
   margin-top: 1rem;
 }
-
 @media (min-width: 640px) {
   .row1 {
     margin-left: 2.5rem;
   }
 }
-
 .hidden-on-sm {
 }
-
 @media (min-width: 640px) {
   .hidden-on-sm {
     display: none;
   }
 }
 
+/* Big Title text */
 .big-title {
   font-weight: 600;
   margin: 0;
   font-size: 3rem;
   line-height: 1.1;
 }
-
 @media (min-width: 768px) {
   .big-title {
     font-size: 3.75rem;
   }
 }
-
 @media (min-width: 1024px) {
   .big-title {
     font-size: 4.5rem;
   }
 }
 
+/* The location text */
 .base-location {
   font-size: 0.75rem;
   text-align: left;
@@ -194,33 +176,30 @@
   line-height: 1.2;
   white-space: nowrap;
 }
-
 @media (min-width: 640px) {
   .base-location {
     font-size: 0.875rem;
   }
 }
 
+/* Accent colors */
 .accentv {
   color: var(--accentv);
 }
-
 .accenty {
   color: var(--accenty);
 }
-
 .accentl {
   color: var(--accentl);
 }
-
 .accentc {
   color: var(--accentc);
 }
-
 .text-primary {
   color: #fff;
 }
 
+/* Row 2 */
 .row2 {
   color: var(--primarytext);
   display: flex;
@@ -231,6 +210,7 @@
   margin-top: 1rem;
 }
 
+/* Row 3 */
 .row3 {
   color: var(--primarytext);
   display: flex;
@@ -254,6 +234,7 @@
   transform: translate(0, 0);
 }
 
+/* Let's Connect button */
 .lets-connect-btn {
   display: flex;
   align-items: center;
@@ -269,13 +250,11 @@
   position: relative;
   z-index: 10;
 }
-
 @media (min-width: 640px) {
   .lets-connect-btn {
     font-size: 0.75rem;
   }
 }
-
 @media (min-width: 768px) {
   .lets-connect-btn {
     font-size: 0.875rem;
@@ -283,7 +262,6 @@
     padding-bottom: 0.75rem;
   }
 }
-
 @media (min-width: 1024px) {
   .lets-connect-btn {
     font-size: 1rem;
@@ -292,12 +270,12 @@
   }
 }
 
+/* Green live-dot effect */
 .relative-green {
   position: relative;
   margin-bottom: 2px;
   z-index: 10;
 }
-
 .green-dot-absolute {
   position: absolute;
   width: 0.5rem;
@@ -307,7 +285,6 @@
   top: 0;
   left: 0;
 }
-
 .green-dot-ping {
   position: absolute;
   width: 0.5rem;
@@ -319,7 +296,6 @@
   animation: ping 1s infinite;
   opacity: 0.75;
 }
-
 @keyframes ping {
   0% {
     transform: scale(1);
@@ -332,6 +308,7 @@
   }
 }
 
+/* Blue circle behind button */
 .blue-bg-circle {
   position: absolute;
   top: -150%;
@@ -343,23 +320,23 @@
   z-index: 1;
 }
 
+/* thegr8binil floating label */
 .thegr8binil-transform {
   position: absolute;
   z-index: 30;
 }
-
 .thegr8binil-img {
   position: absolute;
   width: 6rem;
   pointer-events: none;
 }
-
 @media (min-width: 640px) {
   .thegr8binil-img {
     width: 8rem;
   }
 }
 
+/* Row 4 */
 .row4 {
   color: var(--primarytext);
   display: flex;
@@ -369,64 +346,55 @@
   font-size: 0.625rem;
   margin-top: 1rem;
 }
-
 @media (min-width: 640px) {
   .row4 {
     margin-right: 6rem;
   }
 }
-
 .hidden-sm-inline {
   display: none;
 }
-
 @media (min-width: 640px) {
   .hidden-sm-inline {
     display: inline-block;
   }
 }
-
 .dev-transform2 {
   position: relative;
   z-index: 30;
 }
-
 .dev-img-absolute {
   position: absolute;
   width: 3.5rem;
 }
-
 @media (min-width: 640px) {
   .dev-img-absolute {
     width: 5rem;
   }
 }
 
+/* Last Section */
 .last-section {
   padding-top: 0.5rem;
   text-align: center;
 }
-
 .final-description {
   font-size: 1rem;
   color: var(--primarytext);
   line-height: 1.4;
   font-weight: 500;
 }
-
 @media (min-width: 640px) {
   .final-description {
     font-size: 1.25rem;
     padding-top: 1rem;
   }
 }
-
 @media (min-width: 768px) {
   .final-description {
     font-size: 1.5rem;
   }
 }
-
 @media (min-width: 1024px) {
   .final-description {
     font-size: 1.875rem;
