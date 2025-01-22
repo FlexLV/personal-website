@@ -15,11 +15,13 @@
   width: 100vw;
   min-height: 100vh;
   background-color: #0e100f;
-  overflow: hidden;
+  /* change from overflow: hidden; to: */
+  overflow: visible;
   display: block;
   color: var(--primarytext);
   font-family: "Inter", sans-serif;
 }
+
 
 /* Avatar + greeting row */
 .avatar-row {
@@ -399,4 +401,44 @@
   .final-description {
     font-size: 1.875rem;
   }
+}
+/* Make all cursor images smaller. */
+.cursor-img {
+  width: 1.5rem; /* adjust as you see fit */
+  height: auto;
+}
+
+/* Container holding the cursor plus bubble text */
+.cursor-wrap {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* A little pill-shaped background for the text label */
+/* Make the bubble a bit larger */
+.cursor-bubble {
+  margin-left: 0.5rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 9999px;
+  color: #fff; /* white text */
+  font-size: 0.7rem;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* If your product cursor is blue, match the bubble: */
+.product-bubble {
+  background-color: #0b84fc;
+}
+
+/* If your dev cursor is pink: */
+.dev-bubble {
+  background-color: #ff0080;
+}
+
+/* If your binil cursor is purple, for example: */
+.binil-bubble {
+  background-color: #a020f0;
 }

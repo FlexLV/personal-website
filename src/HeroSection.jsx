@@ -1,52 +1,85 @@
 import React, { useEffect, useState } from "react";
 import "./HeroSection.css";
 
+// A helper to return a small random float in a range
+function rand(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
 export default function HeroSection() {
-  // -- Setup for floating cursors --
-  const [floatingPositions, setFloatingPositions] = useState({
-    product: { x: 0, y: 0, angle: 0 },
-    dev: { x: 0, y: 0, angle: 120 },
-    binil: { x: 0, y: 0, angle: 240 },
+  // Each cursor has an anchor (where it should hover around),
+  // a current angle, and a random speed factor. 
+  const [cursors, setCursors] = useState({
+    product: {
+      anchorX: 950, // Adjust so it hovers near "Hello, I'm Binil"
+      anchorY: 70,
+      angle: 0,
+      speed: 0.002,
+    },
+    dev: {
+      anchorX: 1020, // Adjust to hover near the "UI/UX Designer" text
+      anchorY: 360,
+      angle: 2,
+      speed: 0.002,
+    },
+    binil: {
+      anchorX: 580, // Adjust to hover near "Designer & Developer" 
+      anchorY: 350,
+      angle: 4,
+      speed: 0.002,
+    },
+  });
+
+  // Store the actual X/Y positions in state for the render
+  const [positions, setPositions] = useState({
+    product: { x: 0, y: 0 },
+    dev: { x: 0, y: 0 },
+    binil: { x: 0, y: 0 },
   });
 
   useEffect(() => {
-    // Increased radius to 20, speed to 0.05
-    const radius = 20;
-    const speed = 0.15;
+    const radius = 35; // how far from the anchor each cursor can float
+    let frameId;
 
-    const interval = setInterval(() => {
-      setFloatingPositions((prev) => {
-        // Update each item’s angle, then compute x/y
-        const newProductAngle = prev.product.angle + speed;
-        const newDevAngle = prev.dev.angle + speed;
-        const newBinilAngle = prev.binil.angle + speed;
+    const animate = () => {
+      setCursors((prev) => {
+        const nextCursors = { ...prev };
 
-        return {
-          product: {
-            angle: newProductAngle,
-            x: radius * Math.cos(newProductAngle),
-            y: radius * Math.sin(newProductAngle),
-          },
-          dev: {
-            angle: newDevAngle,
-            x: radius * Math.cos(newDevAngle),
-            y: radius * Math.sin(newDevAngle),
-          },
-          binil: {
-            angle: newBinilAngle,
-            x: radius * Math.cos(newBinilAngle),
-            y: radius * Math.sin(newBinilAngle),
-          },
-        };
+        // For each cursor, we tweak the angle by a base speed + a tiny random “jitter”
+        // so it doesn’t look too robotic.
+        Object.keys(nextCursors).forEach((key) => {
+          const c = nextCursors[key];
+          c.angle += c.speed + rand(-0.001, 0.001); // small random variation
+        });
+
+        return nextCursors;
       });
-    }, 60);
 
-    return () => clearInterval(interval);
-  }, []);
+      // Now compute new x/y for each cursor
+      setPositions((prevPos) => {
+        const newPos = { ...prevPos };
+        Object.entries(cursors).forEach(([key, c]) => {
+          // The wiggle X/Y around the anchor
+          const offsetX = radius * Math.cos(c.angle);
+          const offsetY = radius * Math.sin(c.angle);
+          newPos[key] = {
+            x: c.anchorX + offsetX,
+            y: c.anchorY + offsetY,
+          };
+        });
+        return newPos;
+      });
+
+      frameId = requestAnimationFrame(animate);
+    };
+
+    frameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frameId);
+  }, [cursors]);
 
   return (
     <main className="main-container">
-      {/* Avatar + Greeting row */}
+      {/* --- Avatar + Greeting row --- */}
       <div className="avatar-row">
         <div className="avatar-circle">
           <img
@@ -57,50 +90,47 @@ export default function HeroSection() {
             src="./image0.jpg"
           />
         </div>
-
         <div className="greeting-bubble">
-          <h1 className="greeting-text">
-            Hello, I&apos;m Binil
-            {/* The floating “Product” cursor */}
-            <div
-              className="pink-product-transform"
-              style={{
-                transform: `translate(${
-                  -30 + floatingPositions.product.x
-                }px, ${45 + floatingPositions.product.y}px)`,
-              }}
-            >
-              {/* Replaced the Product.svg with cursor(1).png */}
-              <img
-                src="./cursor1.png"
-                alt="cursor1"
-                className="pink-product-img"
-              />
-            </div>
-          </h1>
+          <h1 className="greeting-text">Hello, I&apos;m Binil</h1>
         </div>
       </div>
 
-      {/* For smaller screens, “Dev” cursor */}
-      <div className="small-screen-dev">
-        <div
-          className="dev-transform"
-          style={{
-            transform: `translate(${
-              -48 + floatingPositions.dev.x
-            }px, ${8 + floatingPositions.dev.y}px)`,
-          }}
-        >
-          {/* Replaced the Dev.svg with cursor(2).png */}
-          <img
-            src="./cursor2.png"
-            alt="cursor2"
-            className="small-dev-img"
-          />
-        </div>
+      {/* --- Floating cursors with random wiggle --- */}
+
+      {/* Product cursor, anchored near top-left (adjust anchorX/Y above) */}
+      <div
+        className="cursor-wrap"
+        style={{
+          transform: `translate(${positions.product.x}px, ${positions.product.y}px)`,
+        }}
+      >
+        <img src="./cursor1.png" alt="cursor1" className="cursor-img" />
+        <div className="cursor-bubble product-bubble">Product</div>
       </div>
 
-      {/* Row 1 */}
+      {/* Dev cursor */}
+      <div
+        className="cursor-wrap"
+        style={{
+          transform: `translate(${positions.dev.x}px, ${positions.dev.y}px)`,
+        }}
+      >
+        <img src="./cursor2.png" alt="cursor2" className="cursor-img" />
+        <div className="cursor-bubble dev-bubble">Dev</div>
+      </div>
+
+      {/* thegr8binil cursor */}
+      <div
+        className="cursor-wrap"
+        style={{
+          transform: `translate(${positions.binil.x}px, ${positions.binil.y}px)`,
+        }}
+      >
+        <img src="./cursor3.png" alt="cursor3" className="cursor-img" />
+        <div className="cursor-bubble binil-bubble">thegr8binil</div>
+      </div>
+
+      {/* --- Remaining layout (same as before) --- */}
       <div className="row1">
         <h1 className="hidden-on-sm">
           // UI/UX Designer <br />
@@ -113,15 +143,12 @@ export default function HeroSection() {
         </h1>
       </div>
 
-      {/* Row 2 */}
       <div className="row2">
         <h1 className="big-title accenty">EXPERIENCE</h1>
       </div>
 
-      {/* Row 3 */}
       <div className="row3">
         <h1 className="big-title accentl">DESIGNER</h1>
-
         <div className="btn-and-username">
           <div className="rounded-button-wrap">
             <button className="lets-connect-btn">
@@ -135,46 +162,13 @@ export default function HeroSection() {
             </button>
             <div className="blue-bg-circle"></div>
           </div>
-
-          {/* Floating label: “thegr8binil” */}
-          <div
-            className="thegr8binil-transform"
-            style={{
-              transform: `translate(${
-                49 + floatingPositions.binil.x
-              }px, ${-36 + floatingPositions.binil.y}px)`,
-            }}
-          >
-            {/* Replaced thegr8binil.svg with cursor(3).png */}
-            <img
-              src="./cursor3.png"
-              alt="cursor3"
-              className="thegr8binil-img"
-            />
-          </div>
         </div>
       </div>
 
-      {/* Row 4 */}
       <div className="row4">
         <h1 className="hidden-sm-inline">
           // UI/UX Designer <br />
           Full-Stack Developer
-          <div
-            className="dev-transform2"
-            style={{
-              transform: `translate(${
-                20 + floatingPositions.dev.x
-              }px, ${44 + floatingPositions.dev.y}px)`,
-            }}
-          >
-            {/* You could also swap in cursor(2).png here as well */}
-            <img
-              src="./cursor(2).png"
-              alt="cursor2"
-              className="dev-img-absolute"
-            />
-          </div>
         </h1>
         <h1 className="big-title accentc">
           <span className="text-primary">&amp; </span>
@@ -182,7 +176,6 @@ export default function HeroSection() {
         </h1>
       </div>
 
-      {/* Final description */}
       <div className="last-section">
         <h1 className="final-description">
           I create a digital experience that borders on <br />
