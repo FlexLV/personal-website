@@ -1,36 +1,32 @@
 import React, { useEffect, useState } from "react";
 import "./HeroSection.css";
 
-// A helper to return a small random float in a range
 function rand(min, max) {
   return Math.random() * (max - min) + min;
 }
 
 export default function HeroSection() {
-  // Each cursor has an anchor (where it should hover around),
-  // a current angle, and a random speed factor. 
   const [cursors, setCursors] = useState({
     product: {
-      anchorX: 950, // Adjust so it hovers near "Hello, I'm Binil"
+      anchorX: 950,
       anchorY: 70,
       angle: 0,
       speed: 0.002,
     },
     dev: {
-      anchorX: 1020, // Adjust to hover near the "UI/UX Designer" text
+      anchorX: 1020,
       anchorY: 360,
       angle: 2,
       speed: 0.002,
     },
     binil: {
-      anchorX: 580, // Adjust to hover near "Designer & Developer" 
+      anchorX: 580,
       anchorY: 350,
       angle: 4,
       speed: 0.002,
     },
   });
 
-  // Store the actual X/Y positions in state for the render
   const [positions, setPositions] = useState({
     product: { x: 0, y: 0 },
     dev: { x: 0, y: 0 },
@@ -38,28 +34,24 @@ export default function HeroSection() {
   });
 
   useEffect(() => {
-    const radius = 35; // how far from the anchor each cursor can float
+    const radius = 35;
     let frameId;
 
     const animate = () => {
       setCursors((prev) => {
         const nextCursors = { ...prev };
 
-        // For each cursor, we tweak the angle by a base speed + a tiny random “jitter”
-        // so it doesn’t look too robotic.
         Object.keys(nextCursors).forEach((key) => {
           const c = nextCursors[key];
-          c.angle += c.speed + rand(-0.001, 0.001); // small random variation
+          c.angle += c.speed + rand(-0.001, 0.001);
         });
 
         return nextCursors;
       });
 
-      // Now compute new x/y for each cursor
       setPositions((prevPos) => {
         const newPos = { ...prevPos };
         Object.entries(cursors).forEach(([key, c]) => {
-          // The wiggle X/Y around the anchor
           const offsetX = radius * Math.cos(c.angle);
           const offsetY = radius * Math.sin(c.angle);
           newPos[key] = {
@@ -79,7 +71,6 @@ export default function HeroSection() {
 
   return (
     <main className="main-container">
-      {/* --- Avatar + Greeting row --- */}
       <div className="avatar-row">
         <div className="avatar-circle">
           <img
@@ -95,9 +86,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* --- Floating cursors with random wiggle --- */}
-
-      {/* Product cursor, anchored near top-left (adjust anchorX/Y above) */}
       <div
         className="cursor-wrap"
         style={{
@@ -108,7 +96,6 @@ export default function HeroSection() {
         <div className="cursor-bubble product-bubble">Product</div>
       </div>
 
-      {/* Dev cursor */}
       <div
         className="cursor-wrap"
         style={{
@@ -119,7 +106,6 @@ export default function HeroSection() {
         <div className="cursor-bubble dev-bubble">Dev</div>
       </div>
 
-      {/* thegr8binil cursor */}
       <div
         className="cursor-wrap"
         style={{
@@ -130,15 +116,14 @@ export default function HeroSection() {
         <div className="cursor-bubble binil-bubble">thegr8binil</div>
       </div>
 
-      {/* --- Remaining layout (same as before) --- */}
       <div className="row1">
         <h1 className="hidden-on-sm">
-          // UI/UX Designer <br />
+          UI/UX Designer <br />
           Full-Stack Developer
         </h1>
         <h1 className="big-title accentv">DIGITAL</h1>
         <h1 className="base-location">
-          // Based in <br />
+          Based in <br />
           Kerala, India
         </h1>
       </div>
@@ -167,7 +152,7 @@ export default function HeroSection() {
 
       <div className="row4">
         <h1 className="hidden-sm-inline">
-          // UI/UX Designer <br />
+          UI/UX Designer <br />
           Full-Stack Developer
         </h1>
         <h1 className="big-title accentc">
