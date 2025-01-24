@@ -40,12 +40,10 @@ export default function HeroSection() {
     const animate = () => {
       setCursors((prev) => {
         const nextCursors = { ...prev };
-
         Object.keys(nextCursors).forEach((key) => {
           const c = nextCursors[key];
           c.angle += c.speed + rand(-0.001, 0.001);
         });
-
         return nextCursors;
       });
 
@@ -71,6 +69,23 @@ export default function HeroSection() {
 
   return (
     <main className="main-container">
+      {/* --- Moved big titles to the top --- */}
+      <div className="row1">
+        <h1 className="hidden-on-sm">
+          UI/UX Designer <br />
+          Full-Stack Developer
+        </h1>
+        <h1 className="big-title accentv">DIGITAL</h1>
+        <h1 className="base-location">
+          Based in <br />
+          Kerala, India
+        </h1>
+      </div>
+
+      <div className="row2">
+        <h1 className="big-title accenty">EXPERIENCE</h1>
+      </div>
+
       <div className="avatar-row">
         <div className="avatar-circle">
           <img
@@ -116,22 +131,6 @@ export default function HeroSection() {
         <div className="cursor-bubble binil-bubble">thegr8binil</div>
       </div>
 
-      <div className="row1">
-        <h1 className="hidden-on-sm">
-          UI/UX Designer <br />
-          Full-Stack Developer
-        </h1>
-        <h1 className="big-title accentv">DIGITAL</h1>
-        <h1 className="base-location">
-          Based in <br />
-          Kerala, India
-        </h1>
-      </div>
-
-      <div className="row2">
-        <h1 className="big-title accenty">EXPERIENCE</h1>
-      </div>
-
       <div className="row3">
         <h1 className="big-title accentl">DESIGNER</h1>
         <div className="btn-and-username">
@@ -141,6 +140,7 @@ export default function HeroSection() {
                 <div className="green-dot-absolute"></div>
                 <div className="green-dot-ping"></div>
               </div>
+              {/* The link is forced to white in CSS below */}
               <a className="z-10" href="/ContactMe">
                 Let’s Connect
               </a>
