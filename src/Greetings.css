@@ -1,23 +1,39 @@
+
+
+
 .greetings-app {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
-  background: transparent; 
+  z-index: 9999999;
+
+  background: #0e100f;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #dbdbdb;
-  z-index: 9999;
-  font-size: 24px;
+
+  font-size: 26px;
+  color: #fff;
+  margin: 0;
 }
 
+
+.greeting-container h1 {
+  margin: 0;
+}
+
+
+.bullet {
+  font-size: 0.87em;
+  margin-right: 0.9rem;
+}
+
+/* ----- Fade Animations ----- */
 .fade-in-first {
   animation: fadeInFirst 1.5s ease forwards;
 }
-
 @keyframes fadeInFirst {
   0% {
     opacity: 0;
@@ -30,7 +46,6 @@
 .fade-in-others {
   animation: fadeInOthers 0.4s ease forwards;
 }
-
 @keyframes fadeInOthers {
   0% {
     opacity: 0;
@@ -40,10 +55,10 @@
   }
 }
 
+/* ----- Slide Up Animation ----- */
 .page-slide-up {
   animation: pageSlideUp 1s ease forwards;
 }
-
 @keyframes pageSlideUp {
   0% {
     transform: translateY(0);
