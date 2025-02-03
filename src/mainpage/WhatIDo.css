@@ -1,0 +1,70 @@
+.What-I-Do {
+    margin-top: 13rem;
+    padding: 0 2rem 4rem;
+  }
+  
+  .what-i-do-title {
+    color: #a249ff;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .services-container {
+    display: flex;
+    gap: 1rem;
+    margin-left: 2rem;
+  }
+  
+  .service-box {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(73, 73, 73);
+    background-color: #141414;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: left;
+    align-items: start;
+    justify-content: end;
+    width: 27rem;
+    height: 20rem;
+  }
+  
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .teal-icon {
+    color: #00ffd5;
+  }
+  
+  .purple-icon {
+    color: #ad5cff;
+  }
+  
+  .pink-icon {
+    color: #ff66c4;
+  }
+  
+  .orange-icon {
+    color: #ff9f43;
+  }
+  
+  .service-box h2 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .service-box p {
+    color: #ccc;
+    line-height: 1.5;
+    font-size: 0.9rem;
+  }
+  
+  .dekstop-pc {
+    height: 3rem;
+    width: 3rem;
+  }
+  

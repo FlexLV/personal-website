@@ -13,25 +13,27 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  padding: 0;
   background: #0e100f;
-}
-
-.main-container {
-  width: 100%;
-  height: 84vh;
-  background-color: #0e100f;
   color: var(--primarytext);
   font-family: "Inter", sans-serif;
-  position: relative;
-  overflow-x: hidden;
+  
 }
 
-.main-container::after {
+/* Main hero container */
+.hero-container {
+  width: 100%;
+
+  min-height: 73vh;
+  position: relative;
+  background-color: #0e100f;
+}
+
+.hero-container::after {
   content: "";
   display: block;
   position: absolute;
@@ -50,6 +52,8 @@ body {
   margin-top: 6rem;
 }
 
+
+
 .avatar-image {
   width: 4rem;
   height: 4rem;
@@ -58,12 +62,11 @@ body {
 }
 
 
-
 .greeting-bubble {
   border: 1px solid var(--bline);
   padding: 1.2rem 1rem;
   border-radius: 9999px;
-  background-color: #0E100F;
+  background-color: #0e100f;
 }
 
 .greeting-text {
@@ -71,6 +74,7 @@ body {
   font-size: 1rem;
   color: var(--primarytext);
 }
+
 
 .title-row {
   display: flex;
@@ -108,6 +112,7 @@ body {
   gap: 0.5rem;
 }
 
+
 .rounded-button-wrap {
   position: relative;
   border-radius: 9999px;
@@ -122,7 +127,7 @@ body {
   font-weight: 600;
   border: 0.1px solid #3d3838;
   border-radius: 9999px;
-  background: #0E100F;
+  background: #0e100f;
   font-size: 0.875rem;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
@@ -138,12 +143,13 @@ body {
   z-index: 2;
 }
 
+
 .blob {
   position: absolute;
   bottom: -30%;
   left: 50%;
   width: 300%;
-  aspect-ratio: 1;
+  aspect-ratio: 1; 
   background-color: var(--blob-color);
   border-radius: 50%;
   transform: translateX(-50%) scale(0);
@@ -155,6 +161,7 @@ body {
 .lets-connect-btn:hover .blob {
   transform: translateX(-50%) scale(1);
 }
+
 
 .relative-green {
   position: relative;
@@ -171,6 +178,7 @@ body {
   background-color: var(--green);
   border-radius: 50%;
 }
+
 
 .green-dot-ping {
   animation: ping 1s infinite;
@@ -192,6 +200,7 @@ body {
 .letsconnect {
   margin-left: 10px;
 }
+
 
 .dev-row-grid {
   display: grid;
@@ -225,6 +234,7 @@ body {
   font-weight: 500;
 }
 
+
 .big-title {
   font-weight: 600;
   margin: 0;
@@ -232,30 +242,28 @@ body {
   line-height: 0.93;
 }
 
+
 @media (min-width: 768px) {
   .big-title {
     font-size: 3.75rem;
   }
 }
-
 @media (min-width: 1024px) {
   .big-title {
     font-size: 5.5rem;
   }
 }
 
+
 .accentv {
   color: var(--accentv);
 }
-
 .accenty {
   color: var(--accenty);
 }
-
 .accentl {
   color: var(--accentl);
 }
-
 .accentc {
   color: var(--accentc);
 }
@@ -289,11 +297,9 @@ body {
 .product-bubble {
   background-color: #0b84fc;
 }
-
 .dev-bubble {
   background-color: #ff0080;
 }
-
 .binil-bubble {
   background-color: #a020f0;
 }

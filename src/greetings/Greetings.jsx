@@ -7,8 +7,8 @@ const Greetings = ({ onFinish }) => {
   const totalGreetings = greetingsList.length;
   const [phase, setPhase] = useState("fadeInFirst");
 
-  const firstFadeDuration = 1500; 
-  const otherFadeDuration = 200;  
+  const firstFadeDuration = 1300; 
+  const otherFadeDuration = 170;  
   const slideUpDuration = 1000;   
 
   useEffect(() => {

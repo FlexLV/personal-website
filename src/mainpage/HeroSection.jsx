@@ -6,20 +6,25 @@ function rand(min, max) {
 }
 
 export default function HeroSection() {
+  // Hardcoded anchor positions (pixels). Might not scale well on small screens,
+  // but we’ll leave them for now.
   const [cursors, setCursors] = useState({
     product: { anchorX: 950, anchorY: 70, angle: 0, speed: 0.002 },
     dev: { anchorX: 1020, anchorY: 360, angle: 2, speed: 0.002 },
     binil: { anchorX: 580, anchorY: 350, angle: 4, speed: 0.002 },
   });
 
+  // State for the actual X/Y used in the transform
   const [positions, setPositions] = useState({
     product: { x: 0, y: 0 },
     dev: { x: 0, y: 0 },
     binil: { x: 0, y: 0 },
   });
 
+  // State for the hover “wobble” on the button
   const [hoverOffset, setHoverOffset] = useState({ x: 0, y: 0 });
 
+  // Handle mouse movement on the “Let’s Connect” button
   const handleMouseMove = (e) => {
     const button = e.currentTarget;
     const rect = button.getBoundingClientRect();
@@ -39,6 +44,7 @@ export default function HeroSection() {
   useEffect(() => {
     let frameId;
     const animate = () => {
+      // Update angles randomly
       setCursors((prev) => {
         const next = { ...prev };
         Object.keys(next).forEach((key) => {
@@ -46,6 +52,8 @@ export default function HeroSection() {
         });
         return next;
       });
+
+      // Recompute the final positions
       setPositions((prev) => {
         const next = { ...prev };
         Object.entries(cursors).forEach(([key, val]) => {
@@ -55,14 +63,16 @@ export default function HeroSection() {
         });
         return next;
       });
+
       frameId = requestAnimationFrame(animate);
     };
+
     frameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frameId);
   }, [cursors]);
 
   return (
-    <main className="main-container">
+    <main className="hero-container">
       <div className="avatar-row">
         <div className="avatar-circle">
           <img
@@ -77,6 +87,7 @@ export default function HeroSection() {
           <h1 className="greeting-text">Hello, I&apos;m Ernests</h1>
         </div>
       </div>
+
       <div className="title-row">
         <h1 className="big-title accentv digital-title">MODERN</h1>
         <div className="base-location">
@@ -84,9 +95,11 @@ export default function HeroSection() {
           Riga, Latvia
         </div>
       </div>
+
       <div className="experience-row">
         <h1 className="big-title accenty">FULL-STACK</h1>
       </div>
+
       <div className="designer-row">
         <h1 className="big-title accentl">WEB &amp; APP</h1>
         <div className="rounded-button-wrap">
@@ -100,8 +113,8 @@ export default function HeroSection() {
           >
             <div className="blob" />
             <div className="relative-green">
-              <div className="green-dot-absolute"></div>
-              <div className="green-dot-ping"></div>
+              <div className="green-dot-absolute" />
+              <div className="green-dot-ping" />
             </div>
             <a className="letsconnect" href="/ContactMe">
               Let’s Connect
@@ -109,6 +122,7 @@ export default function HeroSection() {
           </button>
         </div>
       </div>
+
       <div className="dev-row-grid">
         <div className="dev-left">
           // Full-Stack Web <br />
@@ -118,6 +132,7 @@ export default function HeroSection() {
           <h1 className="big-title accentc">DEVELOPER.</h1>
         </div>
       </div>
+
       <div className="last-section">
         <h1 className="final-description">
           I create digital solutions that excel in <br />
@@ -126,6 +141,8 @@ export default function HeroSection() {
           <span className="accentc">functionality</span>.
         </h1>
       </div>
+
+      {/* Floating “cursor bubbles” */}
       <div
         className="cursor-wrap"
         style={{
@@ -135,6 +152,7 @@ export default function HeroSection() {
         <img src="./cursor1.png" alt="cursor1" className="cursor-img" />
         <div className="cursor-bubble product-bubble">Product</div>
       </div>
+
       <div
         className="cursor-wrap"
         style={{
@@ -144,6 +162,7 @@ export default function HeroSection() {
         <img src="./cursor2.png" alt="cursor2" className="cursor-img" />
         <div className="cursor-bubble dev-bubble">Dev</div>
       </div>
+
       <div
         className="cursor-wrap"
         style={{
