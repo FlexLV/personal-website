@@ -1,4 +1,4 @@
-/* FooterLine.css */
+
 
 body {
   background: #0e100f;
@@ -43,22 +43,20 @@ body {
   align-items: center;
   justify-content: center;
 
-  /* Make background-color, transform, and box-shadow transitions smooth */
   transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
-/* Hover effect: move it up slightly and add a subtle gray ring */
+
 .iconButton:hover {
-  transform: translateY(-4px);            /* Moves icon up */
-  background-color: #d6d1b4;             /* Slightly darker background */
-  box-shadow: 0 0 0 2px #4e4e4e;        /* Gray ring around the button */
+  transform: translateY(-4px);            
+  background-color: #d6d1b4;             
+  box-shadow: 0 0 0 2px #4e4e4e;        
 }
 
-/* Icon styles */
+
 .icon {
   width: 23px;
   height: 20px;
-  /* We are NOT rotating or scaling the icon itself—no spin */
   transition: transform 0.3s ease;
 }
 
@@ -76,7 +74,7 @@ body {
   font-size: 14px;
 }
 
-/* Adjust if certain icons need different sizing */
+
 .instagram {
   width: 25px;
   height: 27px;

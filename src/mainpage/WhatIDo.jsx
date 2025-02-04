@@ -24,7 +24,7 @@ export default function WhatIDo() {
           </div>
         </FadeInLeft>
 
-        <FadeInLeft delay={0.1}>
+        <FadeInLeft delay={0.2}>
           <div className="service-box">
             <div className="service-icon purple-icon">
               <img
@@ -38,7 +38,7 @@ export default function WhatIDo() {
           </div>
         </FadeInLeft>
 
-        <FadeInLeft delay={0.2}>
+        <FadeInLeft delay={0.4}>
           <div className="service-box">
             <div className="service-icon pink-icon">
               <img
@@ -52,7 +52,7 @@ export default function WhatIDo() {
           </div>
         </FadeInLeft>
 
-        <FadeInLeft delay={0.3}>
+        <FadeInLeft delay={0.6}>
           <div className="service-box">
             <div className="service-icon orange-icon">
               <img
