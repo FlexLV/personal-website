@@ -1,6 +1,6 @@
 import React from 'react';
 import HeroSection from "./HeroSection.jsx"
-import Navbar from "./Navbar.jsx"
+import Navbar from "../Components/Navbar.jsx"
 import Footerline from "./FooterLine.jsx";
 import WhatIDo from "./WhatIDo.jsx"
 import Projects from "./Projects.jsx"

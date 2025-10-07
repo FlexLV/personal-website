@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+.contact-page-container{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    gap: 2rem;
+}
+.title-contact-page{
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 3rem;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}

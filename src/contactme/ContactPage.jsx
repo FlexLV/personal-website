@@ -1,6 +1,14 @@
 import React from "react";
-import Navbar from "../mainpage/Navbar";
+import Navbar from "../Components/Navbar.jsx";
+import "./ContactPage.css"
 
-export default function ContactPage(){
-    <Navbar/>
+export default function ContactPage() {
+  return (
+    <div>
+      <Navbar />
+        <div className="contact-page-container">
+           <h1 className="title-contact-page"> Contact Page </h1>
+        </div>
+    </div>
+  );
 }
