@@ -9,7 +9,7 @@ export default function TechStack() {
     { id: 4, src: "./techlogos/aws.png", alt: "AWS" },
     { id: 5, src: "./techlogos/mysql.png", alt: "MySQL" },
     { id: 6, src: "./techlogos/nodejs.png", alt: "Node.js" },
-    { id: 7, src: "./techlogos/react.png", alt: "React" },
+    { id: 7, src: "./techlogos/react33.png", alt: "React" },
     { id: 7, src: "./techlogos/php.png", alt: "PHP" },
     { id: 7, src: "./techlogos/Git.png", alt: "Git" },
 
