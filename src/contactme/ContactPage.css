@@ -1,17 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color:  #0a0d17;
+  color: white;
+  font-family: "Inter", sans-serif;
+}
 
 .contact-page-container{
     display: flex;
     flex-direction: column;
-    height: 80vh;
-    gap: 2rem;
+
 }
-.title-contact-page{
-    text-align: center;
-    font-size: 3rem;
-    margin-top: 3rem;
-    font-family: "Roboto Slab", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
+.title-contact-page {
+  text-align: center;
+  font-size: 5rem;
+  margin-top: 2.3rem;
+  margin-bottom: 18rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(118, 58, 245, 1) 100%,
+    rgba(166, 4, 242, 1) 100%
+  );
+  -webkit-background-clip: text;  /* Chrome/Safari */
+  -webkit-text-fill-color: transparent;
+  background-clip: text;          
+  color: transparent;             
 }
+
+.contacting-container{
+    display: flex;
+    min-height: 38rem;
+    margin-bottom: 15rem;
+    width: 75%;
+    background-color: #161b2c;
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(166, 4, 242, 0.2);
+
+}
+.left-container-contact-page{
+    margin-top: 4rem;
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+.container-thats-wrapping-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
+    height: 15rem;
+}
+ .eclipse{
+    border-radius: 50%;
+ }

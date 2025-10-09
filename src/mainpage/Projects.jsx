@@ -23,10 +23,11 @@ export default function Projects() {
     };
 
     const projects = [
-        { title: "Formy-AI", year: "2024", tech: "Next.js, PostgreSQL, Clerk, Gemini API..." },
-        { title: "FileFlex", year: "2024", tech: "Next.js, TypeScript, FFmpeg" },
-        { title: "Next Dines", year: "2023", tech: "Figma, Notion" },
-        { title: "Algo-Visualizer", year: "2023", tech: "React.js, Git" },
+        { title: "Final Countdown", year: "2024", tech: "Next.js, PostgreSQL, Clerk, Gemini API..." },
+        { title: "Horror game-forum", year: "2024", tech: "React.js, Node.js, C++, MySQL" },
+        { title: "Tetris", year: "2023", tech: "C++" },
+        { title: "Tic-tac-toe", year: "2023", tech: "React.js" },
+        { title: "E-gramata", year: "2023", tech: "PHP, MySQL" }
     ];
 
     return (
