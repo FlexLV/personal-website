@@ -58,4 +58,16 @@ body {
 }
  .eclipse{
     border-radius: 50%;
- }
+    background-color: #A604F2;
+    height: 150px;
+    width: 150px;
+    z-index: 99;
+    position: absolute;
+    opacity: 60%;
+    filter: blur(100px);
+  }
+ .one {
+    left: 86vw;
+    top: 30vh;
+
+  }

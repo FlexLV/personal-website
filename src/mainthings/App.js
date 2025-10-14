@@ -3,7 +3,7 @@ import Greetings from "../greetings/Greetings.jsx";
 import MainContent from "../mainpage/MainContent.jsx";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import ContactPage from "../ContactMe/ContactPage.jsx";
+import ContactPage from "../contactme/ContactPage.jsx";
 import AboutMe from "../about/AboutMe.jsx";
 import ProjectsPage from "../projects/ProjectsPage.jsx";
 
