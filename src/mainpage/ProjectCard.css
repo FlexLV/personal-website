@@ -52,3 +52,12 @@
   .project-row:last-child{
     border-bottom: 1px solid #333;
   }
+  @keyframes scroll {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(calc(-125px * 7));
+    }
+  }
+  

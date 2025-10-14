@@ -67,3 +67,14 @@ body {
   background-color: #0e100f;
   margin: 0;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.contact-button {
+  text-align: center;
+}
+.contact-button .icon {
+  vertical-align: middle;
+}
